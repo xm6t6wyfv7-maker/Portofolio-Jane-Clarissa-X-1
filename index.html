@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Jane Clarissa Orlene | Portfolio</title>
 
     <style>
@@ -32,23 +32,23 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth; /* Membuat efek scrolling mulus saat navigasi diklik */
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: var(--bg-gradient);
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* Scrollbar Customization */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
             background: #F1F1F1;
+            border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
             background: var(--primary-light);
@@ -56,14 +56,13 @@
         }
 
         /* ============================================
-           🧭 NAVBAR (BLUR BACKGROUND)
+           🧭 NAVBAR
            ============================================ */
         nav {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glass);
-            padding: 1.2rem 2rem;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -125,17 +124,18 @@
             background: none;
             border: none;
             color: var(--text-main);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            line-height: 1;
         }
 
         /* ============================================
-           🦸 MODERN HERO SECTION
+           🦸 HERO SECTION
            ============================================ */
         .hero {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 7rem 2rem 5rem 2rem;
+            padding: 6rem 2rem 5rem 2rem;
             display: flex;
             align-items: center;
             gap: 4rem;
@@ -157,6 +157,7 @@
         .hero-text h1 .highlight {
             background: linear-gradient(120deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -176,7 +177,6 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Buttons */
         .btn-group {
             display: flex;
             gap: 1rem;
@@ -213,12 +213,10 @@
         }
 
         .btn-outline:hover {
-            background: rgba(74, 124, 89, 0.05);
-            color: var(--primary);
+            background: rgba(74, 124, 89, 0.08);
             transform: translateY(-3px);
         }
 
-        /* Avatar Container with Glow Effect */
         .hero-avatar-wrapper {
             position: relative;
             flex: 0.8;
@@ -247,22 +245,24 @@
             border: 6px solid white;
             box-shadow: var(--shadow-md);
             animation: morphing 8s infinite ease-in-out;
+            background: #e9ecef;
         }
         
         .hero-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         /* ============================================
-           📋 SECTIONS GENERAL DESIGN
+           📋 SECTIONS
            ============================================ */
         section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 6rem 2rem;
-            scroll-margin-top: 80px; /* Menghalangi agar judul section tidak tertutup Navbar pasca di-scroll */
+            padding: 5rem 2rem;
+            scroll-margin-top: 80px;
         }
 
         .section-title-wrapper {
@@ -288,7 +288,6 @@
             border-radius: 2px;
         }
 
-        /* Scroll Animation Target */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -300,7 +299,6 @@
             transform: translateY(0);
         }
 
-        /* About & Stats Card */
         .about-card {
             background: var(--bg-card);
             backdrop-filter: blur(8px);
@@ -310,23 +308,12 @@
             box-shadow: var(--shadow-md);
         }
 
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .about-text p {
-            color: var(--text-main);
-            font-size: 1.15rem;
-            margin-bottom: 1.5rem;
-        }
-
         .about-stats {
             display: flex;
             gap: 3rem;
             border-top: 1px solid rgba(0,0,0,0.05);
             padding-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .stat-box {
@@ -342,17 +329,7 @@
             line-height: 1;
         }
 
-        .stat-box .label {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* ============================================
-           ⏳ TIMELINE EDUCATION
-           ============================================ */
+        /* Timeline */
         .timeline {
             position: relative;
             border-left: 3px solid rgba(74, 124, 89, 0.2);
@@ -369,7 +346,6 @@
             padding: 1.8rem;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
 
@@ -383,85 +359,40 @@
             border-radius: 50%;
             left: calc(-2rem - 10px);
             top: 28px;
-            transition: var(--transition);
-        }
-
-        .timeline-item:hover {
-            transform: translateX(5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-        }
-
-        .timeline-item:hover::before {
-            background: var(--primary);
         }
 
         .edu-header {
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .edu-logo-wrapper {
             width: 70px;
             height: 70px;
-            background: #FFFFFF;
+            background: white;
             border-radius: var(--radius-md);
-            border: none; 
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             overflow: hidden;
-            padding: 4px;
-            box-shadow: var(--shadow-sm);
+            padding: 6px;
         }
 
         .edu-logo {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            z-index: 2;
-            background: white;
-        }
-
-        .logo-placeholder-text {
-            position: absolute;
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-align: center;
-            font-weight: 600;
-            line-height: 1.2;
-            z-index: 1;
-            padding: 2px;
-        }
-
-        .edu-info h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .edu-info .badge {
-            display: inline-block;
-            background: rgba(74, 124, 89, 0.1);
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            margin-top: 4px;
         }
 
         .edu-date {
             margin-left: auto;
             font-weight: 700;
             color: var(--text-muted);
-            font-size: 0.95rem;
         }
 
-        /* ============================================
-           🚀 INTERACTIVE EXPERIENCE SECTION (WITH FILTER)
-           ============================================ */
+        /* Experience Grid */
         .filter-container {
             display: flex;
             gap: 0.8rem;
@@ -475,7 +406,6 @@
             padding: 0.6rem 1.4rem;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -483,8 +413,6 @@
         .filter-btn.active, .filter-btn:hover {
             background: var(--primary);
             color: white;
-            border-color: var(--primary);
-            box-shadow: 0 4px 10px rgba(74, 124, 89, 0.2);
         }
 
         .experience-grid {
@@ -498,54 +426,38 @@
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             padding: 2rem;
-            box-shadow: var(--shadow-sm);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .exp-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
         }
 
         .exp-card-top {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 1rem;
             margin-bottom: 1.2rem;
+            flex-wrap: wrap;
         }
 
-        .exp-icon {
+        .exp-icon-img {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
             object-fit: cover;
+            border-radius: 12px;
             background: white;
             border: 1px solid rgba(0,0,0,0.05);
             padding: 4px;
-        }
-
-        .exp-title-box h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .exp-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
         }
 
         .tags-wrapper {
             display: flex;
             flex-wrap: wrap;
             gap: 0.4rem;
-            margin-bottom: 1.5rem;
+            margin: 1rem 0;
         }
 
         .exp-tag {
@@ -555,21 +467,17 @@
             font-weight: 600;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            border: 1px solid rgba(104, 176, 171, 0.2);
         }
 
         .exp-card .btn-sm {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.85rem;
-            border-radius: var(--radius-md);
-            width: 100%;
+            padding: 0.6rem;
             text-align: center;
-            box-shadow: none;
             background: #e4ebe6;
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
+            border-radius: var(--radius-md);
+            margin-top: auto;
         }
 
         .exp-card .btn-sm:hover {
@@ -577,9 +485,7 @@
             color: white;
         }
 
-        /* ============================================
-           🎨 HOBBIES CHIPS
-           ============================================ */
+        /* Hobbies */
         .hobby-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -588,46 +494,33 @@
 
         .hobby-item {
             background: white;
-            border: 1px solid rgba(0,0,0,0.05);
             padding: 1.2rem;
             border-radius: var(--radius-lg);
             text-align: center;
             font-weight: 600;
-            box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
 
         .hobby-item:hover {
             transform: translateY(-3px);
-            border-color: var(--primary-light);
-            box-shadow: var(--shadow-md);
             color: var(--primary);
         }
 
-        /* ============================================
-           📬 CONTACT BANNER
-           ============================================ */
+        /* Contact */
         .contact-box {
             background: linear-gradient(135deg, #4A7C59 0%, #31523B 100%);
             border-radius: var(--radius-lg);
             padding: 4rem 3rem;
             text-align: center;
             color: white;
-            box-shadow: 0 10px 30px rgba(74, 124, 89, 0.3);
         }
 
         .contact-box h2 {
             color: white;
-            margin-bottom: 1rem;
         }
-        
-        .contact-box h2::after { display: none; }
 
-        .contact-box p {
-            opacity: 0.85;
-            max-width: 500px;
-            margin: 0 auto 2.5rem auto;
-            font-size: 1.1rem;
+        .contact-box h2::after {
+            display: none;
         }
 
         .contact-grid {
@@ -644,31 +537,19 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
         }
 
         .contact-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background: var(--bg-gradient);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 3rem 2rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
         }
 
-        /* ============================================
-           💥 ANIMATIONS KEYFRAMES
-           ============================================ */
         @keyframes morphing {
             0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
             50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
@@ -680,55 +561,42 @@
             100% { transform: scale(1.05); opacity: 0.4; }
         }
 
-        /* ============================================
-           📱 RESPONSIVE ADJUSTMENTS
-           ============================================ */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column-reverse;
                 text-align: center;
-                padding-top: 4rem;
                 gap: 2rem;
             }
 
             .hero-text h1 { font-size: 2.4rem; }
             .hero-avatar { width: 220px; height: 220px; }
             
-            .btn-group { justify-content: center; }
-
             nav .nav-links {
                 display: none;
                 position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: white;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255,255,255,0.95);
                 flex-direction: column;
-                padding: 1.5rem 2rem;
-                border-bottom: 1px solid var(--border-glass);
-                box-shadow: var(--shadow-md);
+                padding: 1.5rem;
             }
 
             nav .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
-
-            .about-card { padding: 1.8rem; }
-            .about-stats { flex-direction: column; gap: 1rem; }
             
-            .edu-header { flex-direction: column; text-align: center; gap: 0.5rem; }
-            .edu-date { margin-left: 0; margin-top: 5px; }
-            
-            .contact-box { padding: 2.5rem 1.5rem; }
+            .edu-date { margin-left: 0; margin-top: 0.5rem; }
+            .timeline { margin-left: 0; padding-left: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🧭 NAVIGATION BAR -->
     <nav>
         <div class="nav-inner">
             <a href="#" class="logo">Jane<span>Clarissa.</span></a>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
-                <!-- Anchor links disamakan dengan ID section di bawah -->
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -737,8 +605,7 @@
         </div>
     </nav>
 
-    <!-- 🦸 HERO SECTION -->
-    <section class="hero">
+    <div class="hero">
         <div class="hero-text">
             <div class="subtitle">👋 Hello World, I'm</div>
             <h1>Jane <span class="highlight">Clarissa Orlene</span></h1>
@@ -750,49 +617,42 @@
         </div>
         <div class="hero-avatar-wrapper">
             <div class="hero-avatar">
-                <img src="./foto jane.jpeg" alt="Jane's Creative Avatar">
+                <img src="./foto jane.jpeg" alt="Jane Clarissa Orlene" onerror="this.src='https://placehold.co/280x280?text=Jane+Clarissa'">
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 👤 ABOUT ME SECTION -->
-    <section id="about" class="reveal"> <!-- ID di-set ke 'about' -->
+    <section id="about" class="reveal">
         <div class="about-card">
             <div class="section-title-wrapper">
                 <h2>About Me</h2>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Saya merupakan seorang murid kelas 10 di SMA Wardaya (Jurusan IPA) yang memiliki komitmen kuat dalam ruang kepemimpinan dan manajemen organisasi sejak bangku SMP.</p>
-                    <p>Memiliki rekam jejak mengelola tim dalam proyek berskala sekolah hingga tingkat wihara, berpengalaman dalam memimpin divisi.</p>
+            <div class="about-text">
+                <p>Saya merupakan seorang murid kelas 10 di SMA Wardaya (Jurusan IPA) yang memiliki komitmen kuat dalam ruang kepemimpinan dan manajemen organisasi sejak bangku SMP.</p>
+                <p>Memiliki rekam jejak mengelola tim dalam proyek berskala sekolah hingga tingkat wihara, berpengalaman dalam memimpin divisi.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <div class="number" id="expCounter">0</div>
+                    <div class="label">Organizations<br>Involved</div>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-box">
-                        <div class="number" id="expCounter">0</div>
-                        <div class="label">Organizations<br>Involved</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="number">4+</div>
-                        <div class="label">Years Active<br>Experience</div>
-                    </div>
+                <div class="stat-box">
+                    <div class="number">4+</div>
+                    <div class="label">Years Active<br>Experience</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 📄 EDUCATION TIMELINE -->
-    <section id="education" class="reveal"> <!-- ID di-set ke 'education' -->
+    <section id="education" class="reveal">
         <div class="section-title-wrapper">
             <h2>Educational Journey</h2>
         </div>
         <div class="timeline">
-            
-            <!-- SMA WARDAYA -->
             <div class="timeline-item">
                 <div class="edu-header">
                     <div class="edu-logo-wrapper">
-                        <img src="./logowardaya.jpg" class="edu-logo" alt="Logo SMA Wardaya" onerror="this.style.opacity='0'">
-                      
+                        <img src="./logowardaya.jpg" class="edu-logo" alt="SMA Wardaya" onerror="this.src='https://placehold.co/70x70?text=SMA'">
                     </div>
                     <div class="edu-info">
                         <h3>SMA Wardaya</h3>
@@ -801,13 +661,10 @@
                     <div class="edu-date">2025 - Present</div>
                 </div>
             </div>
-
-            <!-- SMP TRI RATNA -->
             <div class="timeline-item">
                 <div class="edu-header">
                     <div class="edu-logo-wrapper">
-                        <img src="./logotr.png" class="edu-logo" alt="Logo SMP Tri Ratna" onerror="this.style.opacity='0'">
-                      
+                        <img src="./logotr.png" class="edu-logo" alt="SMP Tri Ratna" onerror="this.src='https://placehold.co/70x70?text=SMP'">
                     </div>
                     <div class="edu-info">
                         <h3>SMP Tri Ratna</h3>
@@ -816,13 +673,10 @@
                     <div class="edu-date">2022 - 2025</div>
                 </div>
             </div>
-
-            <!-- SD TRI RATNA -->
             <div class="timeline-item">
                 <div class="edu-header">
                     <div class="edu-logo-wrapper">
-                        <img src="./logotr.png" class="edu-logo" alt="Logo SD Tri Ratna" onerror="this.style.opacity='0'">
-                     
+                        <img src="./logotr.png" class="edu-logo" alt="SD Tri Ratna" onerror="this.src='https://placehold.co/70x70?text=SD'">
                     </div>
                     <div class="edu-info">
                         <h3>SD Tri Ratna</h3>
@@ -831,78 +685,46 @@
                     <div class="edu-date">2016 - 2022</div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 🚀 INTERACTIVE EXPERIENCE GRID -->
-    <section id="experience" class="reveal"> <!-- ID di-set ke 'experience' -->
+    <section id="experience" class="reveal">
         <div class="section-title-wrapper">
             <h2>Organizational Milestones</h2>
         </div>
-
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterExp('all')">All Division</button>
-            <button class="filter-btn" onclick="filterExp('wihara')">Wihara Level</button>
-            <button class="filter-btn" onclick="filterExp('sma')">SMA Level</button>
-            <button class="filter-btn" onclick="filterExp('smp')">SMP Level</button>
+            <button class="filter-btn active" onclick="filterExp('all', this)">All Division</button>
+            <button class="filter-btn" onclick="filterExp('wihara', this)">Wihara Level</button>
+            <button class="filter-btn" onclick="filterExp('sma', this)">SMA Level</button>
+            <button class="filter-btn" onclick="filterExp('smp', this)">SMP Level</button>
         </div>
-
-   <div class="experience-grid" id="expGrid">
-           
-            <!-- Card 2 (KOREM - Koordinator UPC Pembi) -->
+        <div class="experience-grid" id="expGrid">
             <div class="exp-card" data-cat="wihara">
                 <div>
                     <div class="exp-card-top">
-                        <!-- TEMPAT TARO FOTO/LOGO 🔽 -->
-                        <div class="edu-logo-wrapper" style="width: 50px; height: 50px; flex-shrink: 0;">
-         <img src="./Logo ekayana.jpeg" class="exp-icon" alt="Korem" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" onerror="this.style.display='none'">
-                         <img src="./logo korem.jpeg" class="exp-icon" alt="Korem" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" onerror="this.style.display='none'">
-                        </div>
+                        <img src="./Logo ekayana.jpeg" class="exp-icon-img" alt="KOREM" onerror="this.src='https://placehold.co/50x50?text=KOREM'">
                         <div class="exp-title-box">
                             <h3>Komisi Remaja (KOREM)</h3>
                         </div>
                     </div>
-                    <p>Organisasi Wihara untuk jenjang usia dari SMP hingga SMA, saya sudah berasa di organisasi ini sejak juli 2022. Saya mulai menjadi pengurus KOREM sejak Desember 2022 hingga sekarang.</p>
+                    <p>Organisasi Wihara untuk jenjang usia dari SMP hingga SMA. Saya menjadi pengurus KOREM sejak Desember 2022.</p>
                     <div class="tags-wrapper">
-                     <span class="exp-tag">Wakil Ketua (2025-2026)</span>
+                        <span class="exp-tag">Wakil Ketua (2025-2026)</span>
                         <span class="exp-tag">Koordinator Upacarika Pembicara</span>
-                        <span class="exp-tag">Periode: Sebelum 2025</span>
                     </div>
                 </div>
                 <a href="https://www.instagram.com/koremwea" target="_blank" class="btn btn-sm">Visit Profile →</a>
             </div>
 
-            <!-- Card 3 (Leo Wardaya) -->
             <div class="exp-card" data-cat="sma">
                 <div>
-                    <div class="exp-card-top"><!-- TEMPAT TARO FOTO/LOGO 🔽 -->
-<div style="display:flex; gap:8px; align-items:center;">
-
-    <img src="./logo leo.png"
-         alt="Logo 1"
-         style="
-            width:50px;
-            height:50px;
-            object-fit:cover;
-            border-radius:8px;
-         ">
-
-    <img src="./logo leo.png"
-         alt="Logo 2"
-         style="
-            width:50px;
-            height:50px;
-            object-fit:cover;
-            border-radius:8px;
-         ">
-
-</div>
+                    <div class="exp-card-top">
+                        <img src="./logo leo.png" class="exp-icon-img" alt="Leo Club" onerror="this.src='https://placehold.co/50x50?text=LEO'">
                         <div class="exp-title-box">
                             <h3>Leo Club Jakarta Wardaya Stella Viva</h3>
                         </div>
                     </div>
-                    <p>Leo Club adalah organisasi kepemudaan nirlaba global yang bergerak di bidang pengabdian kemanusiaan. Saya dan teman teman saya mendirikan Leo Club Jakarta Wardaya Stella Viva pada Januari 2026</p>
+                    <p>Organisasi kepemudaan nirlaba global di bidang pengabdian kemanusiaan. Didirikan pada Januari 2026.</p>
                     <div class="tags-wrapper">
                         <span class="exp-tag">Vice President (2026)</span>
                         <span class="exp-tag">Founding Member</span>
@@ -911,85 +733,57 @@
                 <a href="https://www.instagram.com/leoclub_wdsv" target="_blank" class="btn btn-sm">Visit Profile →</a>
             </div>
 
-            <!-- Card 4 (Leo Humanita) -->
             <div class="exp-card" data-cat="sma">
                 <div>
-                    <div style="display:flex; gap:8px; align-items:center;">
-                            <img src="./logo leo.png"
-                                alt="Logo 1"
-                                style="
-                                    width:50px;
-                                    height:50px;
-                                    object-fit:cover;
-                                    border-radius:8px;
-                                ">
-                            <img src="./logo leo.png"
-                                alt="Logo 2"
-                                style="
-                                    width:50px;
-                                    height:50px;
-                                    object-fit:cover;
-                                    border-radius:8px;
-                                ">
-                        </div>             
+                    <div class="exp-card-top">
+                        <img src="./logo leo.png" class="exp-icon-img" alt="Leo Humanita" onerror="this.src='https://placehold.co/50x50?text=LEO'">
                         <div class="exp-title-box">
                             <h3>Leo Club Jakarta Humanita</h3>
                         </div>
                     </div>
-                    <p>Leo Club adalah organisasi kepemudaan nirlaba global yang bergerak di bidang pengabdian kemanusiaan. Saya bergabung di organisasi ini sejak Agustus 2025</p>
+                    <p>Bergabung sejak Agustus 2025, aktif dalam kegiatan sosial kepemudaan.</p>
                     <div class="tags-wrapper">
                         <span class="exp-tag">Official Member (2025)</span>
                     </div>
-                    <a href="https://www.instagram.com/lcj.humanita" target="_blank" class="btn btn-sm">Visit Profile →</a>
                 </div>
-                
-            
+                <a href="https://www.instagram.com/lcj.humanita" target="_blank" class="btn btn-sm">Visit Profile →</a>
+            </div>
 
-            <!-- Card 5 (OSIS) -->
             <div class="exp-card" data-cat="smp">
                 <div>
                     <div class="exp-card-top">
-                        <!-- TEMPAT TARO FOTO/LOGO 🔽 -->
-                        <div class="edu-logo-wrapper" style="width: 50px; height: 50px; flex-shrink: 0;">
-                            <img src="./logotr.png" class="exp-icon" alt="OSIS" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" onerror="this.style.display='none'">
-                      
-                        </div>
+                        <img src="./logotr.png" class="exp-icon-img" alt="OSIS" onerror="this.src='https://placehold.co/50x50?text=OSIS'">
                         <div class="exp-title-box">
                             <h3>OSIS SMP Tri Ratna</h3>
                         </div>
                     </div>
-                    <p>Organisasi Intra Sekolah merupakan organisasi yang pasti selalu ada di dalam suatu sekolah. Saya menjadi bagian dari OSIS SMP TRIRATNA sejak Oktober 2022 hingga Oktober 2024</p>
+                    <p>Anggota aktif sejak Oktober 2022 hingga Oktober 2024.</p>
                     <div class="tags-wrapper">
                         <span class="exp-tag">Ketua Divisi Kewirausahaan</span>
-                        <span class="exp-tag">Divisi Bela Negara (2022-2024)</span>
+                        <span class="exp-tag">Divisi Bela Negara</span>
                     </div>
                 </div>
                 <a href="https://www.instagram.com/osissmptr" target="_blank" class="btn btn-sm">Visit Profile →</a>
             </div>
 
-            <!-- Card 6 (Pramuka) -->
             <div class="exp-card" data-cat="smp">
                 <div>
                     <div class="exp-card-top">
-                        <!-- TEMPAT TARO FOTO/LOGO 🔽 -->
-                        <div class="edu-logo-wrapper" style="width: 50px; height: 50px; flex-shrink: 0;">
-                            <img src="./logo pasti satir.jpg" class="exp-icon" alt="Pramuka" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" onerror="this.style.display='none'">
-                        </div>
+                        <img src="./logo pasti satir.jpg" class="exp-icon-img" alt="Pramuka" onerror="this.src='https://placehold.co/50x50?text=PRAMUKA'">
                         <div class="exp-title-box">
                             <h3>Pasti Satir (Pramuka Inti)</h3>
                         </div>
                     </div>
-                    <p>Merupakan organisasi Prada Muda Karana (PRAMUKA). Pasti Satir merupakan singkatan dari Pasukan Tim Inti Satuan Tri Ratna</p>
+                    <p>Pasukan Tim Inti Satuan Tri Ratna - Pramuka.</p>
                     <div class="tags-wrapper">
                         <span class="exp-tag">Pratama Putri</span>
                     </div>
                 </div>
                 <a href="https://www.instagram.com/pasti_satir" target="_blank" class="btn btn-sm">Visit Profile →</a>
             </div>
-
         </div>
-</div>
-    <!-- 🏖️ HOBBIES -->
+    </section>
+
     <section id="hobbies" class="reveal">
         <div class="section-title-wrapper">
             <h2>Personal Interests</h2>
@@ -1003,11 +797,10 @@
         </div>
     </section>
 
-    <!-- 📬 CONTACT BANNER -->
-    <section id="contact" class="reveal"> <!-- ID di-set ke 'contact' -->
+    <section id="contact" class="reveal">
         <div class="contact-box">
             <h2>CONTACT INFO</h2>
-            <p></p>
+            <p>Let's collaborate or just say hello!</p>
             <div class="contact-grid">
                 <a href="mailto:janeclary25@gmail.com" class="contact-btn">📧 Email Me</a>
                 <a href="https://www.instagram.com/janeclarissa259" target="_blank" class="contact-btn">📷 Instagram</a>
@@ -1016,44 +809,41 @@
         </div>
     </section>
 
-    <!-- 📄 FOOTER -->
     <footer>
-        <p>© <span id="year"></span> Created with by Jane Clarissa Orlene</p>
+        <p>© <span id="year"></span> Created with 💚 by Jane Clarissa Orlene</p>
     </footer>
 
-    <!-- ⚡ LIGHT JAVASCRIPT ENGINE -->
     <script>
-        // 1. Mobile Menu Control
+        // Mobile menu toggle
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
         }
 
-        // Penambahan event listener otomatis: Ketika menu di-klik di device HP, navigasi langsung tertutup kembali
-        document.querySelectorAll('.nav-links a').forEach(item => {
-            item.addEventListener('click', () => {
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
 
-        // 2. Automated Experience Counter Engine
-        const totalCards = document.querySelectorAll('.exp-card').length;
-        document.getElementById('expCounter').textContent = totalCards;
-        document.getElementById('year').textContent = new Date().getFullYear(); 
+        // Count organizations
+        const totalOrgs = document.querySelectorAll('.exp-card').length;
+        document.getElementById('expCounter').textContent = totalOrgs;
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 3. Interactive Filter Engine
-        function filterExp(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+        // Filter function (FIXED: menerima parameter event target)
+        function filterExp(category, btnElement) {
+            // Update active button styling
+            const allBtns = document.querySelectorAll('.filter-btn');
+            allBtns.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
             
-            if(event) {
-                event.target.classList.add('active');
-            }
-
+            // Filter cards
             const cards = document.querySelectorAll('.exp-card');
             cards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'flex';
-                } else if (card.getAttribute('data-cat') === category) {
+                const cardCat = card.getAttribute('data-cat');
+                if (category === 'all' || cardCat === category) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -1061,15 +851,15 @@
             });
         }
 
-        // 4. Scroll Reveal Engine
+        // Scroll reveal animation
         function revealElements() {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
-
-                if (elementTop < windowHeight - elementVisible) {
+                const revealPoint = 100;
+                
+                if (elementTop < windowHeight - revealPoint) {
                     element.classList.add('active');
                 }
             });
